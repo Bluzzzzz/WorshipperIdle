@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <script type="text/javascript">
+        function Load() {
+           var savegame = JSON.parse(localStorage.getItem("WorshipperSave"))
+            if (savegame !== null) {
+                gameData = savegame
+                document.getElementById("totemGod1").innerHTML = gameData.totemGod1 + " Totem Created"
+                document.getElementById("woodSummoned").innerHTML = gameData.wood + " Wood Summoned"
+                if (gameData.churchBuilt){
+                    document.getElementById("buildChurch").innerHTML = "Church Built"
+                }
+            }
+        }
+</script>
+</head>
+<body onload="Load()">
+    <p>God of Trees</p>
+    <p id="woodSummoned">0 Wood Summoned</p>
+    <button onclick="worshipGod1()">Worship God of Trees</button>
+    <p id="totemGod1">0 Totem Created</p>
+    <button id="buildTotem", onclick="totemGod1()">Build Totem</button>
+    <button id="buildChurch", onclick="buildChurch()">Build Church</button>
+    <button id="save", onclick="saveGameManually()">Save</button>
+    <script src="main.js" charset="utf-8" type="text/javascript"></script>
+</body>
+</html>
